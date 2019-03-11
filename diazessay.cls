@@ -1,19 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Diaz Essay
-% LaTeX Class
-% Version 1.0 (13/1/19)
-%
-% This class originates from:
-% http://www.LaTeXTemplates.com
-%
-% Authors:
-% Vel (vel@LaTeXTemplates.com)
-% Nicolas Diaz (nsdiaz@uc.cl)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %----------------------------------------------------------------------------------------
 %	CLASS CONFIGURATION
 %----------------------------------------------------------------------------------------
