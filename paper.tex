@@ -10,6 +10,8 @@
 \sectionfont{\centering}
 \usepackage{listings}
 \usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fancyvrb}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -50,6 +52,21 @@
   breakatwhitespace=true,
   tabsize=3
 }
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+{fontsize=\footnotesize,
+ %
+ frame=lines,  % top and bottom rule only
+ framesep=2em, % separation between frame and text
+ rulecolor=\color{Gray},
+ %
+ label=\fbox{\color{Black}evilstats.txt},
+ labelposition=topline,
+ %
+ commandchars=\|\(\), % escape character and argument delimiters for
+                      % commands within the verbatim
+ commentchar=*        % comment character
+}
+
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
 %----------------------------------------------------------------------------------------
@@ -165,7 +182,10 @@ The target host appears to have been taken offline by the user. Traffic generate
 
 The default gateway 10.0.0.2 broadcasted asking for the compromised host. The broadcast was made 485 times. This could possibly indicate the command and control server attempting to reestablish communication with the target, as the default gateway attempted to ARB probe for the host. This assumes that the network has no firewall in place, or one that is misconfigured. Since packets entering the network should be blocked unless they are solicited from inside the network, as part of an on going connection. Thus the best explanation for the anomalous ARP probes are that the C2 server is checking whether his compromised host are still online.
 
+\VerbatimInput{evilstats.txt}
+
 %------------------------------------------------
+
 
 \section*{Conclusion}
 
