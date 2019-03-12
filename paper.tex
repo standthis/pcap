@@ -97,19 +97,19 @@ This analysis examines events that took place on a South African network on the 
 
 \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.30]{Maktub_Full.png}
+        \includegraphics[scale=0.28]{Maktub_Full.png}
     \caption{Pcap Lifetime graph}
 \end{figure}
 
 \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.30]{mak20.png}
+        \includegraphics[scale=0.28]{mak20.png}
     \caption{IO graph for 2017-03-20} 
 \end{figure}
 
 \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.30]{mak22.png}
+        \includegraphics[scale=0.28]{mak22.png}
     \caption{IO Graph for 2017-03-22}
 \end{figure}
 
@@ -146,37 +146,47 @@ Following execution of the payload we can infer that the DNS queries were made i
 ("45jngpxc4cgsxqxc.torstorm.org", A(94.242.58.199))
 \end{lstlisting}
 
-Next we see a query for the domain cyrptostorm.is. Cryptostorm is a German based VPN service that markets itself as for the "truly paranoid" \cite{cryptostorm}. The malware then follows to make HTTP get requests with encoded URLs to a Beijing IP. This could possibly be the keys generated for the encryption based on the user agent of Mircrosoft-CryptoAPI/6.1, Microsoft's Cyrptographic Application programming interface. After this phase a TLS connection is established with Cryptostorm using openVPN. This takes place as the user casually visits googlecode.com and stripe.com. 
+Next we see a query for the domain cyrptostorm.is. Cryptostorm is a German based VPN service that markets itself as for the "truly paranoid" \cite{cryptostorm}. Cryptostorm uses openVPN to establish a secure VPN connection. The target host uses TLS to tunnel the openVPN connection to avoid blocking of the protocol. This is a feature provided by Cryptostorm which encrypts the TCP handshake to obscure the openVPN traffic \cite{tls}. 
 
 \begin{lstlisting}
 ("186.240.165.46.in-addr.arpa", PTR("cryptostorm.is"))
 \end{lstlisting}
 
-\begin{lstlisting}
-00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [tcp] 10.0.0.5:52853         -> 178.255.83.1:80        [http] Request { method: "GET", uri: "/MFEwTzBNMEswSTAJBgUrDgMCGgUABBReAhtobFzTvhaRmVeJ38QUchY9AwQUu69\%2BAj36pvE8hI6t
-7jiY7NkyMtQCECsuburZdTZsFIpu26N8jAc\%3D", version: "1.1", host: Some("ocsp.comodoca.com"), agent: Some("Microsoft-CryptoAPI/6.1"), referer: None, auth: None, cookies: None }
+The openVPN connection provides a secure communication channel for remote interaction with the host. This traffic is encrypted but DNS queries leak from the compromised host giving away precious information about the malware's behavior. We assume that this is an oversight made by the malware developers, as DNS resolution should happen over an encrypted channel.  DNS is a protocol that provides valuable insights to ISPs and intelligence agencies conducting surveillance. DNSsec provides tries to find a solution to this problem, by encrypting DNS \cite{dnssec}. 
 
-00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [tcp] 10.0.0.5:52856         -> 197.84.135.45:80       [http] Request { method: "GET", uri: "/ocsp/MEkwRzBFMEMwQTAJBgUrDgMCGgUABBTy4Gr5hYodjXCbSRkjeqm1Gih\%2BZAQUSt0GFhu89mi
-1dvWBtrtiGrpagS8CCBmQZHv1CkD2", version: "1.1", host: Some("clients1.google.com"), agent: Some("Microsoft-CryptoAPI/6.1"), referer: None, auth: None, cookies: None }
+The DNS leaks provide insights into the TOR hidden services that are being accessed via the Cryptostorm VPN. The domains queried are all associated with TOR hidden service payment portals used by attackers to receive Cryptocurrency payments \cite{hybrid}. Once again we see the use of services that allow insecure access to TOR by regular web browses. 
+
+\begin{lstlisting}
+("45jngpxc4cgsxqxc.torstorm.org", A(94.242.58.199)) 
+("45jngpxc4cgsxqxc.tor2web.org", A(192.36.27.5))
 \end{lstlisting}
 
+The following illustrates what is likely to be the user checking the payment portal.
+\begin{lstlisting}
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [tcp] 10.0.0.5:49219         -> 192.36.27.5:80         [http] Request { method: "GET", uri: "/", version: "1.1", host: Some("45jngpxc4cgsxqxc.tor2web.org"), agent: Some("Mo
+zilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)"), referer: None, auth: None, cookies: None }
+\end{lstlisting}
 
 The target host ceases to exist on the networking failing to respond to even ARP broadcasts from this point fordard. 
 
 %Tor2web listing
 
-Possibly user checking ransom instruction on TOR hideen service.
-\begin{lstlisting}
-00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [tcp] 10.0.0.5:49219         -> 192.36.27.5:80         [http] Request { method: "GET", uri: "/", version: "1.1", host: Some("45jngpxc4cgsxqxc.tor2web.org"), agent: Some("Mo
-zilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)"), referer: None, auth: None, cookies: None }
-\end{lstlisting}
+Windows NT 6.1
+
+Malicious IPs 
+103.198.0.2:80
+192.36.27.5:443
+192.36.27.5:80
+192.64.119.254:80
 
 
 %------------------------------------------------
 
 \section*{Traffic captured on the 22nd}
 
-The target host appears to have been taken offline by the user. Traffic generated on the 22nd is primarily benign windows updates and legitimate web traffic from other hosts on the network. Although no malicious connection were established, there were abnormal ARP probes.The default gateway 10.0.0.2 broadcasted asking for compromised host. The broadcast was made 485 times. This could possibly indicate the command and control server attempting to reastablish communication with the target, as the default gateway attempted to ARB probe for the host.
+The target host appears to have been taken offline by the user. Traffic generated on the 22nd is primarily benign windows updates and legitimate web traffic from other hosts on the network. Although no malicious connections were established, there were abnormal ARP probes.
+
+The default gateway 10.0.0.2 broadcasted asking for compromised host. The broadcast was made 485 times. This could possibly indicate the command and control server attempting to reestablish communication with the target, as the default gateway attempted to ARB probe for the host. This assumes that the network has no firewall in place, or one that is misconfigured. Since packets entering the network should be blocked unless they are solicited from inside the network, as part of an on going connection. Thus the best explanation for the anomalous ARP probes are that the C2 server is checking whether his compromised hosts are still online.
 
 %------------------------------------------------
 
