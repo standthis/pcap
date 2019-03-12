@@ -86,6 +86,7 @@
 % "*" means no numbering -> \section*{Introduction}
 
 \section{Introduction}
+This analysis examines events that took place on a South African network on the 2017-03-20 and 2017-03-22. We will make the argument, based purely on captured network traffic, that a host was compromised with a ransomware variant known as Maktub. Ransomware is the term used to describe malicious software that either encrypts data (thus denying access), or threatens to leak data. The attacker will offer to stop the attack if payment is received thus the name ransomware. Maktub is of the encryption variant and is usually delivered via an email attachment, which appears legitimate but performs its malicious activity in the background.
 
 
 
@@ -111,14 +112,18 @@
     \caption{IO Graph for 2017-03-22}
 \end{figure}
 
+% STANDTHIS
 This analysis examines events that took place on a South African network on the 2017-03-20 and 2017-03-22. We will make the argument, based purely on captured network traffic and inferences gleaned from malware analysis, that a host was compromised with a ransomware variant known as Maktub. 
 
 The three graphs depict packets per 10 seconds for traffic for a full network capture over the entire time period, followed by traffic generated on the 20th and 22nd. The traffic was divided in this way to logically separate the behavior associated with each time sequence. The story of the infected host is encapsulated on the first day whereas the second day exhibits indirect behavior of the ransomware strain as the target machine has been taken offline.  
 
+% DAN 
+The three graphs depict packets per 10 seconds for a full network capture over the period, followed by traffic generated on the 20th and 22nd. The traffic was divided in this way to logically separate the behavior associated with each time sequence. The story of the infected host is encapsulated on the first day, whereas the second day exhibits indirect behavior of the infected host as the machine has been taken offline.  
+
 A point to make about attacks of this kind, is that they can easily slip between the cracks since benign traffic is by far the most dominant communication on the network. Most of the traffic generated involves the target host receiving legitimate windows updates from trusted IP addresses. In monitoring the DNS traffic closely we found some interesting queries for known malicious sites. We set out to uncover the initial execution malicious code and how communication with the C2 (command and control server) was carried out.
 
 Legitmate windows update from Ikai CDN 
-DNS for onion domain singapoor 
+DNS for onion domain Singapore 
 DNS for cryptostorm to establish VPN Germany
 Get Windows-CryptoAPI from comodoca 
 China DNS req  for 1.83.255.178 
@@ -131,7 +136,11 @@ Cryptostorm VPN connect over TLS
 
 \section{Traffic for initial compromise}
 
+% MATT
 On the 2017-03-20 our host (10.0.0.5) seems to be engaged in routine Windows updates from IPs associated with Microsoft and Akamai (A legitimate CDN, content distribution network). The first signs of anomalous activity commence. A mail with an attachment, potentially a msword document is fetched after a "503 Backend fetch failed". The destination IP is associated with a onion domain (Host: 45jngpxc4cgsxqxc.onion.link). The .onion domain refers to TOR hidden services which require the TOR browser to interpret the protocol and connect to the hidden service. TOR is a privacy oriented protocol which aims to obscure the origin of the sender, by encapsulating a packet in three layers of encryption prior to routing the packet through three intermediaries nodes before reaching the server. The protocol serves a valuable role to actors of differing motivation. The protocol is not only used by activists and those most vulnerable but also those who exploit it for profit. The ".link" allows for for convenience at the expense of \cite{onionlink}. This allowed the target system to visit a TOR hidden service hosted by our attackers. The onion link confirms our suspicions as it is associated with a malware analysis of an malicious windows executable inserted inside a benign looking update policy word document \cite{hybrid}.
+
+% DAN
+On the 2017-03-20 our host (10.0.0.5) seems to be engaged in routine Windows updates from IPs associated with Microsoft and Akamai (A legitimate CDN, content distribution network). The first signs of anomalous activity commence. A mail with an attachment, potentially a msword document is fetched after a "503 Backend fetch failed". The destination IP is associated with a onion domain (Host: 45jngpxc4cgsxqxc.onion.link). The .onion domain refers to TOR hidden services which require the TOR browser to interpret the protocol and connect to the site. TOR is a privacy oriented protocol which aims to obscure the origin of the sender, by encapsulating a packet in three layers of encryption before routing the packet through three intermediaries nodes on the way to the server. The protocol serves a valuable role to actors of differing motivation. The protocol is not only used by activists and those most vulnerable but also those who exploit it for profit. The ".link" allows for for convenience at the expense of \cite{onionlink}. This allowed the target system to visit a TOR hidden service hosted by our attackers. The onion link confirms our suspicions as it is associated with a malware analysis of an malicious windows executable inserted inside a benign looking update policy word document \cite{hybrid}.
 
 
 \begin{lstlisting}
@@ -284,13 +293,13 @@ Put your code here.
 Put your code here.
 \end{lstlisting}
 
-Following execution of the payload we can infer that the DNS quieries were made in order to resolve another .onion domain.
+Following execution of the payload we can infer that the DNS queries were made in order to resolve another .onion domain.
 
 \begin{lstlisting}
 ("45jngpxc4cgsxqxc.torstorm.org", A(94.242.58.199))
 \end{lstlisting}
 
-Next we see a query for the domain cyrptostorm.is. Cryptostorm is a German based VPN service that markets itself as for the "truly paranoid" \cite{cryptostorm}. The malware then follows to make HTTP get requests with encoded URLs to a Beijing IP. This could possibly be the keys generated for the encryption based on the user agent of Mircrosoft-CryptoAPI/6.1, Microsoft's Cyrptographic Application programming interface. After this phase an TLS connection is established with the Cryptostorm using openVPN. This takes place as the user casually visits googlecode.com and stripe.com. 
+Next we see a query for the domain cyrptostorm.is. Cryptostorm is a German based VPN service that markets itself as for the "truly paranoid" \cite{cryptostorm}. The malware then follows to make HTTP get requests with encoded URLs to a Beijing IP. This could possibly be the keys generated for the encryption based on the user agent of Mircrosoft-CryptoAPI/6.1, Microsoft's Cyrptographic Application programming interface. After this phase a TLS connection is established with Cryptostorm using openVPN. This takes place as the user casually visits googlecode.com and stripe.com. 
 
 \begin{lstlisting}
 ("186.240.165.46.in-addr.arpa", PTR("cryptostorm.is"))
