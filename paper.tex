@@ -182,6 +182,7 @@ The target host appears to have been taken offline by the user. Traffic generate
 
 The default gateway 10.0.0.2 broadcasted asking for the compromised host. The broadcast was made 485 times. This could possibly indicate the command and control server attempting to reestablish communication with the target, as the default gateway attempted to ARB probe for the host. This assumes that the network has no firewall in place, or one that is misconfigured. Since packets entering the network should be blocked unless they are solicited from inside the network, as part of an on going connection. Thus the best explanation for the anomalous ARP probes are that the C2 server is checking whether his compromised host are still online.
 
+Table of TCP conversation with malware infrastructure.
 \VerbatimInput{evilstats.txt}
 
 %------------------------------------------------
