@@ -1,0 +1,5 @@
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:52255         -> 10.0.0.2:53            [dns] req, (A, "45jngpxc4cgsxqxc.tor2web.org")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:52255         [dns] resp, ("45jngpxc4cgsxqxc.tor2web.org", A(192.36.27.5))
+                                                                                                           ("45jngpxc4cgsxqxc.tor2web.org", A(185.100.85.150))
+																										   00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:51166         -> 10.0.0.2:53            [dns] req, (AAAA, "45jngpxc4cgsxqxc.tor2web.org")
+																										   c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:51166         [dns] resp, ("45jngpxc4cgsxqxc.tor2web.org", AAAA(2a03:f85:8::5))

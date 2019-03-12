@@ -113,13 +113,10 @@ This analysis examines events that took place on a South African network on the 
     \caption{IO Graph for 2017-03-22}
 \end{figure}
 
-% STANDTHIS
-This analysis examines events that took place on a South African network on the 2017-03-20 and 2017-03-22. We will make the argument, based purely on captured network traffic and inferences gleaned from prior malware analysis, that a host was compromised with a ransomware variant known as Maktub. 
-
 % DAN 
 The three graphs depict packets per 10 seconds for a the compete pcap sample, followed by traffic generated on the 20th and 22nd. The traffic was divided in this way to logically separate the behavior associated with each time sequence. The story of the infected host is encapsulated on the first day, whereas the second day exhibits indirect behavior of the infected host as the machine has been taken offline.  
 
-A point to make about attacks of this kind, is that they can easily slip between the cracks since benign traffic is by far the most dominant communication on the network. Most of the traffic generated involves the target host receiving legitimate windows updates from trusted IP addresses. 
+A point to make about attacks of this kind is that they can easily slip between the cracks since benign traffic is by far the most dominant communication on the network. Most of the traffic generated involves the target host receiving legitimate windows updates from trusted IP addresses. 
 
 In monitoring the DNS traffic closely we found some interesting queries for known malicious sites. We set out to uncover the initial execution point of the malicious code and how communication with the C2 (command and control server) was carried out.
 

@@ -1,0 +1,52 @@
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:61226         -> 10.0.0.2:53            [dns] req, (PTR, "2.0.198.103.in-addr.arpa")
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:61226         -> 10.0.0.2:53            [dns] req, (PTR, "2.0.198.103.in-addr.arpa")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:61226         [dns] resp, []
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:61226         -> 10.0.0.2:53            [dns] req, (PTR, "2.0.198.103.in-addr.arpa")
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [tcp] 10.0.0.5:52849         -> 103.198.0.2:80         [http] Request { method: "GET", uri: "/favicon.ico", version: "1.1", host: Some("45jngpxc4cgsxqxc.onion.link"), agent
+: Some("Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)"), referer: None, auth: None, cookies: N
+one }
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:61226         [dns] resp, []
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:61226         [dns] resp, []
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:61226         -> 10.0.0.2:53            [dns] req, (PTR, "2.0.198.103.in-addr.arpa")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:61226         [dns] resp, []
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:51704         -> 10.0.0.2:53            [dns] req, (A, "45jngpxc4cgsxqxc.torstorm.org")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:51704         [dns] resp, ("45jngpxc4cgsxqxc.torstorm.org", A(94.242.58.199))
+                                                                                                           ("45jngpxc4cgsxqxc.torstorm.org", A(192.64.119.254))
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:49695         -> 10.0.0.2:53            [dns] req, (AAAA, "45jngpxc4cgsxqxc.torstorm.org")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:49695         [dns] resp, []
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:57862         -> 10.0.0.2:53            [dns] req, (PTR, "199.58.242.94.in-addr.arpa")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:57862         [dns] resp, []
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [tcp] 10.0.0.5:52851         -> 192.64.119.254:80      [http] Request { method: "GET", uri: "/", version: "1.1", host: Some("45jngpxc4cgsxqxc.torstorm.org"), agent: Some("M
+ozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)"), referer: None, auth: None, cookies: None }
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [tcp] 192.64.119.254:80      -> 10.0.0.5:52851         [text] "HTTP/1.1 302 Found\r\nServer: nginx\r\nDate: Mon, 20 Mar 2017 13:20:33 GMT\r\nContent-Type: text/html; charse
+t=utf-8\r\nContent-Length: 45\r\nConnection: keep-alive\r\nLocation: https://cryptostorm.is\r\nX-Served-By: Namecheap URL Forward\r\n\r\n<a href=\"https://cryptostorm.is\">Found</a>.\n\n"
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:60307         -> 10.0.0.2:53            [dns] req, (PTR, "254.119.64.192.in-addr.arpa")
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:50923         -> 10.0.0.2:53            [dns] req, (A, "cryptostorm.is")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:50923         [dns] resp, ("cryptostorm.is", A(46.165.240.186))
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:52680         -> 10.0.0.2:53            [dns] req, (AAAA, "cryptostorm.is")
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:52680         -> 10.0.0.2:53            [dns] req, (AAAA, "cryptostorm.is")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:60307         [dns] resp, []
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:60307         -> 10.0.0.2:53            [dns] req, (PTR, "254.119.64.192.in-addr.arpa")
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:60307         -> 10.0.0.2:53            [dns] req, (PTR, "254.119.64.192.in-addr.arpa")
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:52680         -> 10.0.0.2:53            [dns] req, (AAAA, "cryptostorm.is")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:52680         [dns] resp, []
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:52680         [dns] resp, []
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:52680         [dns] resp, []
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:60307         [dns] resp, []
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:60307         [dns] resp, []
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:60307         -> 10.0.0.2:53            [dns] req, (PTR, "254.119.64.192.in-addr.arpa")
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [tcp] 10.0.0.5:52852         -> 46.165.240.186:443     [tls] ClientHello (hostname: "cryptostorm.is")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:60307         [dns] resp, []
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:61872         -> 10.0.0.2:53            [dns] req, (PTR, "186.240.165.46.in-addr.arpa")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:61872         [dns] resp, ("186.240.165.46.in-addr.arpa", PTR("cryptostorm.is"))
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:59404         -> 10.0.0.2:53            [dns] req, (A, "ocsp.comodoca.com")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:59404         [dns] resp, ("ocsp.comodoca.com", A(178.255.83.1))
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:64237         -> 10.0.0.2:53            [dns] req, (AAAA, "ocsp.comodoca.com")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:64237         [dns] resp, ("ocsp.comodoca.com", AAAA(2a02:1788:2fd::b2ff:5301))
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:64237         -> 10.0.0.2:53            [dns] req, (AAAA, "ocsp.comodoca.com")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:64237         [dns] resp, ("ocsp.comodoca.com", AAAA(2a02:1788:2fd::b2ff:5301))
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [tcp] 10.0.0.5:52853         -> 178.255.83.1:80        [http] Request { method: "GET", uri: "/MFEwTzBNMEswSTAJBgUrDgMCGgUABBReAhtobFzTvhaRmVeJ38QUchY9AwQUu69\%2BAj36pvE8hI6t
+7jiY7NkyMtQCECsuburZdTZsFIpu26N8jAc\%3D", version: "1.1", host: Some("ocsp.comodoca.com"), agent: Some("Microsoft-CryptoAPI/6.1"), referer: None, auth: None, cookies: None }
+00:16:6f:98:80:74 -> c8:51:95:2c:35:73, [udp] 10.0.0.5:54122         -> 10.0.0.2:53            [dns] req, (PTR, "1.83.255.178.in-addr.arpa")
+c8:51:95:2c:35:73 -> 00:16:6f:98:80:74, [udp] 10.0.0.2:53            -> 10.0.0.5:54122         [dns] resp, ("1.83.255.178.in-addr.arpa", PTR("ocsp.comodoca.com"))
+\end{lstlisting}

@@ -1,0 +1,84 @@
+2017-03-20 15:20:08.517517 IP (tos 0x0, ttl 128, id 4560, offset 0, flags [DF], proto TCP (6), length 551)
+    10.0.0.5.52848 > 103.198.0.2.80: Flags [P.], cksum 0x4696 (correct), seq 1:512, ack 1, win 4236, length 511: HTTP, length: 511
+        GET / HTTP/1.1
+        Accept: image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*
+        Accept-Language: en-US
+        User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)
+        Accept-Encoding: gzip, deflate
+        Host: 45jngpxc4cgsxqxc.onion.link
+        Connection: Keep-Alive
+
+E..'..@...u4
+...g....p.P*R>....*P...F...GET / HTTP/1.1
+Accept: image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*
+Accept-Language: en-US
+User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)
+Accept-Encoding: gzip, deflate
+Host: 45jngpxc4cgsxqxc.onion.link
+Connection: Keep-Alive
+
+2017-03-20 15:20:08.790039 IP (tos 0x18, ttl 52, id 30272, offset 0, flags [DF], proto TCP (6), length 524)
+    103.198.0.2.80 > 10.0.0.5.52848: Flags [P.], cksum 0x6305 (correct), seq 1:485, ack 512, win 123, length 484: HTTP, length: 484
+        HTTP/1.1 503 Backend fetch failed
+        Date: Mon, 20 Mar 2017 08:21:16 GMT
+        Content-Type: text/html; charset=utf-8
+        Retry-After: 5
+        Age: 0
+        X-Cache: MISS
+        Content-Length: 286
+        Connection: keep-alive
+
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>503 Backend fetch failed</title>
+          </head>
+          <body>
+            <h1>Error 503 Backend fetch failed</h1>
+            <p>Backend fetch failed</p>
+            <h3>Guru Meditation:</h3>
+            <p>XID: 288687254</p>
+            <hr>
+            <p>Varnish cache server</p>
+          </body>
+        </html>
+    103.198.0.2.80 > 10.0.0.5.52849: Flags [P.], cksum 0x7d3d (correct), seq 1:1133, ack 311, win 123, length 1132: HTTP, length: 1132
+        HTTP/1.1 500 Internal Server Error
+        Content-Length: 856
+        Content-Encoding: gzip
+        X-Check-Tor: false
+        Content-Security-Policy: upgrade-insecure-requests
+        X-Onion-Url: 45jngpxc4cgsxqxc.onion
+        Date: Mon, 20 Mar 2017 08:21:20 GMT
+        Age: 0
+        X-Cache: MISS
+        Connection: keep-alive
+
+E.....@.4..zg...
+....P.q!'(.k.k}P..{}=..HTTP/1.1 500 Internal Server Error
+Content-Length: 856
+Content-Encoding: gzip
+X-Check-Tor: false
+Content-Security-Policy: upgrade-insecure-requests
+X-Onion-Url: 45jngpxc4cgsxqxc.onion
+Date: Mon, 20 Mar 2017 08:21:20 GMT
+Age: 0
+X-Cache: MISS
+Connection: keep-alive
+
+*PAYLOAD
+
+    10.0.0.5.137 > 103.198.0.2.137: [udp sum ok]
+>>> NBT UDP PACKET(137): QUERY; REQUEST; BROADCAST
+TrnID=0xF66C
+OpCode=0
+NmFlags=0x1
+Rcode=0
+QueryCount=1
+AnswerCount=0
+AuthorityCount=0
+AddressRecCount=0
+QuestionRecords:
+Name=*               NameType=0x00 (Workstation)
+QuestionType=0x21
+QuestionClass=0x1
