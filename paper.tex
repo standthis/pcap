@@ -120,12 +120,6 @@ A point to make about attacks of this kind is that they can easily slip between 
 
 In monitoring the DNS traffic closely we found some interesting queries for known malicious sites. We set out to uncover the initial execution point of the malicious code and how communication with the C2 (command and control server) was carried out.
 
-Legitmate windows update from Ikai CDN 
-DNS for onion domain Singapore 
-DNS for cryptostorm to establish VPN Germany
-Get Windows-CryptoAPI from comodoca 
-China DNS req  for 1.83.255.178 
-
 Cryptostorm VPN connect over TLS 
 192.36.27.5 -> Amsterdam IP for onion (Entry node)
 103.198.0.2     45jngpxc4cgsxqxc.onion.link -> Singapore
@@ -135,7 +129,7 @@ Cryptostorm VPN connect over TLS
 \section*{Traffic for initial compromise on the 20th}
 
 % DAN
-On the 2017-03-20 our host (10.0.0.5) seems to be engaged in routine Windows updates from IPs associated with Microsoft and Akamai (A legitimate CDN, content distribution network). The first signs of anomalous activity commence from what appears to be a span mail. A mail with an attachment, potentially a Microsoft Word document, is fetched after a "503 Backend fetch failed" response. The following request is made to a destination IP associated with an onion domain (Host: 45jngpxc4cgsxqxc.onion.link). The .onion domain refers to TOR hidden services which require the TOR browser to interpret the protocol and connect to the site. TOR is a privacy oriented protocol which aims to obscure the origin of the sender, by encapsulating a packet in three layers of encryption before routing the packet through three intermediaries nodes on the way to the server. The protocol serves a valuable role to actors of differing motivation. The protocol is not only used by activists and those circumventing censorship but also those who exploit it for profit. The ".link" allows for for convenience at the expense of privacy, as your service provider can see your what content you are requesting \cite{onionlink}. The host also visited  torstorm.org domain, which offers a similar service. This allowed the target system to visit a TOR hidden services hosted by our attackers. The onion link confirms our suspicions as it is associated with a malware analysis of a malicious windows executable inserted inside a benign looking update policy word document \cite{hybrid}. Please refer to appendix A for the TCP conversation of the payload delivery.
+On the 2017-03-20 our host (10.0.0.5) seems to be engaged in routine Windows updates from IPs associated with Microsoft and Akamai (A legitimate CDN, content distribution network). The first signs of anomalous activity commence from what appears to be a spam mail. A mail with an attachment, potentially a Microsoft Word document, is fetched after a "503 Backend fetch failed" response. The following request is made to a destination IP associated with an onion domain (Host: 45jngpxc4cgsxqxc.onion.link). The .onion domain refers to TOR hidden services which require the TOR browser to interpret the protocol and connect to the site. TOR is a privacy oriented protocol which aims to obscure the origin of the sender, by encapsulating a packet in three layers of encryption before routing the packet through three intermediaries nodes on the way to the server. The protocol serves a valuable role to actors of differing motivation. The protocol is not only used by activists and those circumventing censorship but also those who exploit it for profit. The ".link" allows for for convenience at the expense of privacy, as your service provider can see your what content you are requesting \cite{onionlink}. The host also visited  torstorm.org domain, which offers a similar service. This allowed the target system to visit a TOR hidden services hosted by our attackers. The onion link confirms our suspicions as it is associated with a malware analysis of a malicious windows executable inserted inside a benign looking update policy word document \cite{hybrid}. Please refer to appendix A for the TCP conversation of the payload delivery.
 
 Following execution of the payload we can infer that the DNS queries were made in order to resolve another .onion domain.
 
@@ -143,7 +137,7 @@ Following execution of the payload we can infer that the DNS queries were made i
 ("45jngpxc4cgsxqxc.torstorm.org", A(94.242.58.199))
 \end{lstlisting}
 
-Next we see a query for the domain cyrptostorm.is. Cryptostorm is a German based VPN service that markets itself as for the "truly paranoid" \cite{cryptostorm}. Cryptostorm uses openVPN to establish a secure VPN connection. The target host uses TLS to tunnel the openVPN connection to avoid blocking of the protocol. This is a feature provided by Cryptostorm which encrypts the TCP handshake to obscure the openVPN traffic \cite{tls}. 
+Next we see a query for the domain cryptostorm.is. Cryptostorm is a German based VPN service that markets itself as for the "truly paranoid" \cite{cryptostorm}. Cryptostorm uses openVPN to establish a secure VPN connection. The target host uses TLS to tunnel the openVPN connection to avoid blocking of the protocol. This is a feature provided by Cryptostorm which encrypts the TCP handshake to obscure the openVPN traffic \cite{tls}. 
 
 \begin{lstlisting}
 ("186.240.165.46.in-addr.arpa", PTR("cryptostorm.is"))
@@ -164,7 +158,7 @@ The following illustrates what is likely to be the user checking the payment por
 zilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)"), referer: None, auth: None, cookies: None }
 \end{lstlisting}
 
-The target host ceases to exist on the networking failing to respond to even ARP broadcasts from this point fordard. 
+The target host ceases to exist on the networking failing to respond to even ARP broadcasts from this point forward. 
 
 %Tor2web listing
 
@@ -176,6 +170,7 @@ Malicious IPs
 192.36.27.5:80
 192.64.119.254:80
 
+%\lstinputlisting[language=html]{evilstats.txt}
 
 %------------------------------------------------
 
